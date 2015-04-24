@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local BoxDecorator = {};
 
-function BoxDecorator.new(baseCol, highlightCol, x, y, w, h)
+function BoxDecorator.new(baseCol, highlightCol, outlineCol, x, y, w, h)
     local self = BaseDecorator.new();
 
     local currentCol = baseCol;
@@ -12,7 +12,7 @@ function BoxDecorator.new(baseCol, highlightCol, x, y, w, h)
         local px, py = self.child:getPosition();
         love.graphics.setColor(currentCol);
         love.graphics.rectangle('fill', px + x, py + y, w, h)
-        love.graphics.setColor(255, 255, 255, 100);
+        love.graphics.setColor(outlineCol);
         love.graphics.rectangle('line', px + x, py + y, w, h)
         love.graphics.setColor(255, 255, 255, 255);
     end
