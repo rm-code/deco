@@ -26,7 +26,7 @@ function BaseDecorator.new()
     end
 
     function self:mousereleased(mx, my, b)
-        self.super:mousepressed(mx, my, b);
+        self.super:mousereleased(mx, my, b);
     end
 
     function self:attach(nsuper)
