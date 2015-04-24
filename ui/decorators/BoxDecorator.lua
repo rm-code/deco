@@ -8,8 +8,8 @@ function BoxDecorator.new(baseCol, highlightCol, x, y, w, h)
     local currentCol = baseCol;
 
     function self:draw()
-        self.super:draw();
-        local px, py = self.super:getPosition();
+        self.child:draw();
+        local px, py = self.child:getPosition();
         love.graphics.setColor(currentCol);
         love.graphics.rectangle('fill', px + x, py + y, w, h)
         love.graphics.setColor(255, 255, 255, 100);
@@ -22,14 +22,14 @@ function BoxDecorator.new(baseCol, highlightCol, x, y, w, h)
     end
 
     function self:intersects(cx, cy)
-        local px, py = self.super:getPosition();
+        local px, py = self.child:getPosition();
 
         if px + x < cx and px + x + w > cx and py + y < cy and py + y + h > cy then
             currentCol = highlightCol;
             return true;
         else
             currentCol = baseCol;
-            return self.super:intersects(cx, cy);
+            return self.child:intersects(cx, cy);
         end
     end
 

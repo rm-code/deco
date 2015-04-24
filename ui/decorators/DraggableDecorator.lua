@@ -14,12 +14,12 @@ function DraggableDecorator.new(x, y, w, h)
             drag = true;
             return;
         end
-        self.super:mousepressed(mx, my, b);
+        self.child:mousepressed(mx, my, b);
     end
 
     function self:mousereleased(mx, my, b)
         drag = false;
-        self.super:mousereleased(mx, my, b);
+        self.child:mousereleased(mx, my, b);
     end
 
     function self:mousemoved(mx, my, dx, dy)
@@ -28,7 +28,7 @@ function DraggableDecorator.new(x, y, w, h)
         if drag then
             self:setPosition(px + x + dx, py + y + dy);
         else
-            self.super:mousemoved(mx, my, dx, dy)
+            self.child:mousemoved(mx, my, dx, dy)
         end
     end
 

@@ -2,55 +2,55 @@ local BaseDecorator = {};
 
 function BaseDecorator.new()
     local self = {
-        super = nil;
+        child = nil;
     };
 
     function self:draw()
-        self.super:draw();
+        self.child:draw();
     end
 
     function self:update(dt)
-        self.super:update(dt);
+        self.child:update(dt);
     end
 
     function self:intersects(cx, cy)
-        return self.super:intersects(cx, cy);
+        return self.child:intersects(cx, cy);
     end
 
     function self:mousemoved(mx, my, dx, dy)
-        self.super:mousemoved(mx, my, dx, dy);
+        self.child:mousemoved(mx, my, dx, dy);
     end
 
     function self:mousepressed(mx, my, b)
-        self.super:mousepressed(mx, my, b);
+        self.child:mousepressed(mx, my, b);
     end
 
     function self:mousereleased(mx, my, b)
-        self.super:mousereleased(mx, my, b);
+        self.child:mousereleased(mx, my, b);
     end
 
-    function self:attach(nsuper)
-        if not self.super then
-            self.super = nsuper;
+    function self:attach(nchild)
+        if not self.child then
+            self.child = nchild;
         else
-            self.super:attach(nsuper);
+            self.child:attach(nchild);
         end
     end
 
     function self:setPosition(nx, ny)
-        self.super:setPosition(nx, ny);
+        self.child:setPosition(nx, ny);
     end
 
     function self:setDimensions(nw, nh)
-        self.super:setDimensions(nw, nh)
+        self.child:setDimensions(nw, nh)
     end
 
     function self:getPosition()
-        return self.super:getPosition();
+        return self.child:getPosition();
     end
 
     function self:getDimensions()
-        return self.super:getDimensions();
+        return self.child:getDimensions();
     end
 
     return self;
