@@ -21,7 +21,7 @@ function HeaderDecorator.new(baseCol, highlightCol, x, y, w, h)
     function self:intersects(cx, cy)
         local px, py = self:getPosition();
 
-        if px + x < cx and px + x + w > cx and py + y < cy and py + h > cy then
+        if px + x < cx and px + x + w > cx and py + y < cy and py + y + h > cy then
             currentCol = highlightCol;
             return true;
         else
@@ -33,7 +33,7 @@ function HeaderDecorator.new(baseCol, highlightCol, x, y, w, h)
     function self:mousepressed(mx, my, b)
         local px, py = self:getPosition();
 
-        if b == 'l' and px + x < mx and px + x + w > mx and py + y < my and py + h > my then
+        if b == 'l' and px + x < mx and px + x + w > mx and py + y < my and py + y + h > my then
             drag = true;
             return;
         end

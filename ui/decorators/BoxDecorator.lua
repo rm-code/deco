@@ -24,7 +24,7 @@ function BoxDecorator.new(baseCol, highlightCol, x, y, w, h)
     function self:intersects(cx, cy)
         local px, py = self.super:getPosition();
 
-        if px + x < cx and px + x + w > cx and py + y < cy and py + h > cy then
+        if px + x < cx and px + x + w > cx and py + y < cy and py + y + h > cy then
             currentCol = highlightCol;
             return true;
         else
