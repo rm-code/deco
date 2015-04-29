@@ -8,7 +8,8 @@ function ImageDecorator.new(img, x, y, w, h)
     function self:draw()
         self.child:draw();
         local px, py = self:getPosition();
-        love.graphics.draw(img, px + x, py + y, 0, w / img:getWidth(), h / img:getHeight());
+        local pw, ph = self:getDimensions();
+        love.graphics.draw(img, px + x, py + y, 0, (pw + w) / img:getWidth(), (ph + h) / img:getHeight());
     end
 
     return self;

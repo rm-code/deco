@@ -8,9 +8,10 @@ function TextLabel.new(text, rgba, font, x, y, w)
     function self:draw()
         self.child:draw();
         local px, py = self:getPosition();
+        local pw, ph = self:getDimensions();
         love.graphics.setFont(font);
         love.graphics.setColor(rgba);
-        love.graphics.printf(text, px + x, py + y, w);
+        love.graphics.printf(text, px + x, py + y, pw + w);
         love.graphics.setColor(255, 255, 255, 255);
     end
 

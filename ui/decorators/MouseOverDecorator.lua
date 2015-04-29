@@ -11,8 +11,9 @@ function MouseOverDecorator.new(highlightCol, x, y, w, h)
         self.child:draw();
         if mouseOver then
             local px, py = self:getPosition();
+            local pw, ph = self:getDimensions();
             love.graphics.setColor(highlightCol);
-            love.graphics.rectangle('fill', px + x, py + y, w, h);
+            love.graphics.rectangle('fill', px + x, py + y, pw + w, ph + h);
             love.graphics.setColor(255, 255, 255, 255);
         end
     end
@@ -22,9 +23,9 @@ function MouseOverDecorator.new(highlightCol, x, y, w, h)
     end
 
     function self:intersects(cx, cy)
-        local px, py = self.child:getPosition();
-
-        if px + x < cx and px + x + w > cx and py + y < cy and py + y + h > cy then
+        local px, py = self:getPosition();
+        local pw, ph = self:getDimensions();
+        if px + x < cx and px + x + pw + w > cx and py + y < cy and py + y + ph + h > cy then
             mouseOver = true;
             return true;
         else

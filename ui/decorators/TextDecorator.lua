@@ -10,8 +10,9 @@ function TextDecorator.new(text, x, y, w, h)
     function self:draw()
         self.child:draw();
         local px, py = self:getPosition();
-        love.graphics.setScissor(px + x, py + y, w, h);
-        love.graphics.printf(text, px + x + ox, py + y + oy, w);
+        local pw, ph = self:getDimensions();
+        love.graphics.setScissor(px + x, py + y, pw + w, ph + h);
+        love.graphics.printf(text, px + x + ox, py + y + oy, pw + w);
         love.graphics.setScissor();
     end
 

@@ -9,8 +9,8 @@ function DraggableDecorator.new(x, y, w, h)
 
     function self:mousepressed(mx, my, b)
         local px, py = self:getPosition();
-
-        if b == 'l' and px + x < mx and px + x + w > mx and py + y < my and py + y + h > my then
+        local pw, ph = self:getDimensions();
+        if b == 'l' and px + x < mx and px + x + pw + w > mx and py + y < my and py + y + ph + h > my then
             drag = true;
             return;
         end
