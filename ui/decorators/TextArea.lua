@@ -1,8 +1,8 @@
 local BaseDecorator = require('ui.decorators.BaseDecorator');
 
-local TextDecorator = {};
+local TextArea = {};
 
-function TextDecorator.new(text, x, y, w, h)
+function TextArea.new(text, x, y, w, h)
     local self = BaseDecorator.new();
 
     local ox, oy = 0, 0;
@@ -27,4 +27,4 @@ function TextDecorator.new(text, x, y, w, h)
     return self;
 end
 
-return TextDecorator;
+return TextArea;
