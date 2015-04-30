@@ -20,6 +20,7 @@ function MouseOverDecorator.new(highlightCol, x, y, w, h, anchorHor, anchorVer)
 
     function self:update(dt)
         self:intersects(love.mouse.getPosition());
+        self.child:update(dt);
     end
 
     function self:intersects(cx, cy)
