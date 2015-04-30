@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local DraggableDecorator = {};
 
-function DraggableDecorator.new(x, y, w, h)
+function DraggableDecorator.new(x, y, w, h, anchorHor, anchorVer)
     local self = BaseDecorator.new();
 
     local drag = false;
@@ -30,6 +30,13 @@ function DraggableDecorator.new(x, y, w, h)
         else
             self.child:mousemoved(mx, my, dx, dy)
         end
+    end
+
+    function self:setDimensions(nw, nh)
+        local pw, ph = self:getDimensions();
+        if anchorHor then w = w + (pw - nw) end
+        if anchorVer then h = h + (ph - nh) end
+        self.child:setDimensions(nw, nh);
     end
 
     return self;

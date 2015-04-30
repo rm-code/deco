@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local MouseOverDecorator = {};
 
-function MouseOverDecorator.new(highlightCol, x, y, w, h)
+function MouseOverDecorator.new(highlightCol, x, y, w, h, anchorHor, anchorVer)
     local self = BaseDecorator.new();
 
     local mouseOver = true;
@@ -32,6 +32,13 @@ function MouseOverDecorator.new(highlightCol, x, y, w, h)
             mouseOver = false;
             return self.child:intersects(cx, cy);
         end
+    end
+
+    function self:setDimensions(nw, nh)
+        local pw, ph = self:getDimensions();
+        if anchorHor then w = w + (pw - nw) end
+        if anchorVer then h = h + (ph - nh) end
+        self.child:setDimensions(nw, nh);
     end
 
     return self;
