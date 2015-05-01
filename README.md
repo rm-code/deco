@@ -8,29 +8,31 @@ It was written as a replacement for the old UI code in the git visualisation sof
 
 ## Example
 
-For example this code creates an image panel, which can be dragged around freely and highlights its contents when the mouse is hovering over it:
+For example the following code creates an image panel, which can be dragged around freely, resized and highlights its contents when the mouse is hovering over it:
 
 ```lua
-local SimplePanel = {};
+local ImagePanel = {};
 
-function SimplePanel.new(x, y, w, h)
-    local bodyBaseCol = { 80, 80, 80, 255 };
-    local shadowCol = { 20, 20, 20, 100 };
-    local hlCol = { 255, 255, 255, 80 };
+function ImagePanel.new(x, y, w, h)
+    local bodyBaseCol = {  80,  80,  80, 255 };
+    local shadowCol   = {  20,  20,  20, 100 };
+    local hlCol       = { 255, 255, 255,  80 };
 
-    local img = love.graphics.newImage('example.jpg');
+    local img   = love.graphics.newImage('example.jpg');
+    local arrow = love.graphics.newImage('downRight.png');
 
-    local self = BaseDecorator.new();
-    self:attach(DraggableDecorator  .new(0, 0, 0, 0));
-    self:attach(MouseOverDecorator  .new(hlCol, 0, 0, 0, 0));
-    self:attach(ImageDecorator      .new(img, 1, 1, -2, -2));
-    self:attach(BoxDecorator        .new('fill', bodyBaseCol, 0, 0, 0, 0));
-    self:attach(BoxDecorator        .new('fill', shadowCol, 8, 8, 0, 0));
-    self:attach(BaseComponent       .new(x, y, w, h));
+    local self = Resizable(w - 16, h - 16, -w + 16, -h + 16, true, true, true, true);
+    self:attach(ImageDecorator(arrow, w - 16, h - 16, -w + 16, -h + 16, true, true, true, true));
+    self:attach(Draggable(0, 0, 0, 0));
+    self:attach(MouseOverDecorator(hlCol, 0, 0, 0, 0));
+    self:attach(ImageDecorator(img, 1, 1, -2, -2));
+    self:attach(BoxDecorator('fill', bodyBaseCol, 0, 0, 0, 0));
+    self:attach(BoxDecorator('fill', shadowCol, 8, 8, 0, 0));
+    self:attach(BaseComponent(x, y, w, h));
     return self;
 end
 
-return SimplePanel;
+return ImagePanel;
 ```
 
 Want to add a header? Simply add more decorators. Want to make it static? Remove the _draggable_ decorator.
