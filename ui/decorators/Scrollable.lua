@@ -6,7 +6,7 @@ local MAX_VELOCITY = 8;
 local SCROLL_SPEED = 2;
 local DAMPING = 8;
 
-function Scrollable.new(x, y, w, h, anchorHor, anchorVer)
+function Scrollable.new(x, y, w, h, fixedW, fixedH)
     local self = BaseDecorator.new();
 
     local scrollVelocity = 0;
@@ -51,8 +51,8 @@ function Scrollable.new(x, y, w, h, anchorHor, anchorVer)
 
     function self:setDimensions(nw, nh)
         local pw, ph = self:getDimensions();
-        if anchorHor then w = w + (pw - nw) end
-        if anchorVer then h = h + (ph - nh) end
+        if fixedW then w = w + (pw - nw) end
+        if fixedH then h = h + (ph - nh) end
         self.child:setDimensions(nw, nh);
     end
 

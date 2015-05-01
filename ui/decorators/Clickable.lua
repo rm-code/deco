@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local Clickable = {};
 
-function Clickable.new(command, x, y, w, h, anchorHor, anchorVer)
+function Clickable.new(command, x, y, w, h, fixedW, fixedH)
     local self = BaseDecorator.new();
 
     function self:mousepressed(mx, my, b)
@@ -17,8 +17,8 @@ function Clickable.new(command, x, y, w, h, anchorHor, anchorVer)
 
     function self:setDimensions(nw, nh)
         local pw, ph = self:getDimensions();
-        if anchorHor then w = w + (pw - nw) end
-        if anchorVer then h = h + (ph - nh) end
+        if fixedW then w = w + (pw - nw) end
+        if fixedH then h = h + (ph - nh) end
         self.child:setDimensions(nw, nh);
     end
 

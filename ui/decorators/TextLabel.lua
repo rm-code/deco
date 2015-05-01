@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local TextLabel = {};
 
-function TextLabel.new(text, rgba, font, x, y, anchorHor, anchorVer)
+function TextLabel.new(text, rgba, font, x, y, fixedW, fixedH)
     local self = BaseDecorator.new();
 
     function self:draw()
@@ -16,8 +16,8 @@ function TextLabel.new(text, rgba, font, x, y, anchorHor, anchorVer)
 
     function self:setDimensions(nw, nh)
         local pw, ph = self:getDimensions();
-        if anchorHor then w = w + (pw - nw) end
-        if anchorVer then h = h + (ph - nh) end
+        if fixedW then w = w + (pw - nw) end
+        if fixedH then h = h + (ph - nh) end
         self.child:setDimensions(nw, nh);
     end
 
