@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local TextLabel = {};
 
-local function new(text, rgba, font, x, y, fixedW, fixedH, fixedPosX, fixedPosY)
+local function new(t, text, rgba, font, x, y, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator();
 
     function self:draw()
