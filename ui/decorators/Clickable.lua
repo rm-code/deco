@@ -1,8 +1,8 @@
 local BaseDecorator = require('ui.decorators.BaseDecorator');
 
-local ClickableDecorator = {};
+local Clickable = {};
 
-function ClickableDecorator.new(command, x, y, w, h, anchorHor, anchorVer)
+function Clickable.new(command, x, y, w, h, anchorHor, anchorVer)
     local self = BaseDecorator.new();
 
     function self:mousepressed(mx, my, b)
@@ -25,4 +25,4 @@ function ClickableDecorator.new(command, x, y, w, h, anchorHor, anchorVer)
     return self;
 end
 
-return ClickableDecorator;
+return Clickable;

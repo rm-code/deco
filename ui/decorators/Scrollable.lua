@@ -1,12 +1,12 @@
 local BaseDecorator = require('ui.decorators.BaseDecorator');
 
-local ScrollableDecorator = {};
+local Scrollable = {};
 
 local MAX_VELOCITY = 8;
 local SCROLL_SPEED = 2;
 local DAMPING = 8;
 
-function ScrollableDecorator.new(x, y, w, h, anchorHor, anchorVer)
+function Scrollable.new(x, y, w, h, anchorHor, anchorVer)
     local self = BaseDecorator.new();
 
     local scrollVelocity = 0;
@@ -59,4 +59,4 @@ function ScrollableDecorator.new(x, y, w, h, anchorHor, anchorVer)
     return self;
 end
 
-return ScrollableDecorator;
+return Scrollable;

@@ -1,8 +1,8 @@
 local BaseDecorator = require('ui.decorators.BaseDecorator');
 
-local DraggableDecorator = {};
+local Draggable = {};
 
-function DraggableDecorator.new(x, y, w, h, anchorHor, anchorVer)
+function Draggable.new(x, y, w, h, anchorHor, anchorVer)
     local self = BaseDecorator.new();
 
     local drag = false;
@@ -42,4 +42,4 @@ function DraggableDecorator.new(x, y, w, h, anchorHor, anchorVer)
     return self;
 end
 
-return DraggableDecorator;
+return Draggable;
