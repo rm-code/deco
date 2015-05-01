@@ -1,6 +1,6 @@
 local BaseComponent = {};
 
-function BaseComponent.new(x, y, w, h)
+local function new(t, x, y, w, h)
     local self = {};
 
     function self:draw()
@@ -48,4 +48,4 @@ function BaseComponent.new(x, y, w, h)
     return self;
 end
 
-return BaseComponent;
+return setmetatable(BaseComponent, { __call = new });

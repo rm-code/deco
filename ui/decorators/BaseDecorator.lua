@@ -1,6 +1,6 @@
 local BaseDecorator = {};
 
-function BaseDecorator.new()
+local function new()
     local self = {
         child = nil;
     };
@@ -56,4 +56,4 @@ function BaseDecorator.new()
     return self;
 end
 
-return BaseDecorator;
+return setmetatable(BaseDecorator, { __call = new });

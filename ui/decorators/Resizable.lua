@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local Resizable = {};
 
-function Resizable.new(x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     local resize = false;
 
@@ -47,4 +47,4 @@ function Resizable.new(x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     return self;
 end
 
-return Resizable;
+return setmetatable(Resizable, { __call = new });

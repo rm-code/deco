@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local ImageDecorator = {};
 
-function ImageDecorator.new(img, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, img, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     function self:draw()
         self.child:draw();
@@ -24,4 +24,4 @@ function ImageDecorator.new(img, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPos
     return self;
 end
 
-return ImageDecorator;
+return setmetatable(ImageDecorator, { __call = new });

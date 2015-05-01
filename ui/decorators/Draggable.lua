@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local Draggable = {};
 
-function Draggable.new(x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     local drag = false;
 
@@ -44,4 +44,4 @@ function Draggable.new(x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     return self;
 end
 
-return Draggable;
+return setmetatable(Draggable, { __call = new });

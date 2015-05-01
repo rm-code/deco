@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local Clickable = {};
 
-function Clickable.new(command, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, command, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     function self:mousepressed(mx, my, b)
         local px, py = self:getPosition();
@@ -27,4 +27,4 @@ function Clickable.new(command, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY
     return self;
 end
 
-return Clickable;
+return setmetatable(Clickable, { __call = new });

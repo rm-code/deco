@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local MouseOverDecorator = {};
 
-function MouseOverDecorator.new(highlightCol, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, highlightCol, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     local mouseOver = true;
 
@@ -47,4 +47,4 @@ function MouseOverDecorator.new(highlightCol, x, y, w, h, fixedW, fixedH, fixedP
     return self;
 end
 
-return MouseOverDecorator;
+return setmetatable(MouseOverDecorator, { __call = new });

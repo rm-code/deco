@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local BoxDecorator = {};
 
-function BoxDecorator.new(mode, rgba, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, mode, rgba, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     function self:draw()
         self.child:draw();
@@ -26,4 +26,4 @@ function BoxDecorator.new(mode, rgba, x, y, w, h, fixedW, fixedH, fixedPosX, fix
     return self;
 end
 
-return BoxDecorator;
+return setmetatable(BoxDecorator, { __call = new });

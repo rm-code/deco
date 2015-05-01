@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local TextArea = {};
 
-function TextArea.new(text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     local ox, oy = 0, 0;
 
@@ -36,4 +36,4 @@ function TextArea.new(text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     return self;
 end
 
-return TextArea;
+return setmetatable(TextArea, { __call = new });

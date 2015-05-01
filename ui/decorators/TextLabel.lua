@@ -2,8 +2,8 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local TextLabel = {};
 
-function TextLabel.new(text, rgba, font, x, y, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(text, rgba, font, x, y, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     function self:draw()
         self.child:draw();
@@ -26,4 +26,4 @@ function TextLabel.new(text, rgba, font, x, y, fixedW, fixedH, fixedPosX, fixedP
     return self;
 end
 
-return TextLabel;
+return setmetatable(TextLabel, { __call = new });

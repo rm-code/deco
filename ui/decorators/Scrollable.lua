@@ -6,8 +6,8 @@ local MAX_VELOCITY = 8;
 local SCROLL_SPEED = 2;
 local DAMPING = 8;
 
-function Scrollable.new(x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
-    local self = BaseDecorator.new();
+local function new(t, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+    local self = BaseDecorator();
 
     local scrollVelocity = 0;
 
@@ -61,4 +61,4 @@ function Scrollable.new(x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     return self;
 end
 
-return Scrollable;
+return setmetatable(Scrollable, { __call = new });
