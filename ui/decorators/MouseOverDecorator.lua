@@ -2,7 +2,7 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local MouseOverDecorator = {};
 
-function MouseOverDecorator.new(highlightCol, x, y, w, h, fixedW, fixedH)
+function MouseOverDecorator.new(highlightCol, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator.new();
 
     local mouseOver = true;
@@ -39,6 +39,8 @@ function MouseOverDecorator.new(highlightCol, x, y, w, h, fixedW, fixedH)
         local pw, ph = self:getDimensions();
         if fixedW then w = w + (pw - nw) end
         if fixedH then h = h + (ph - nh) end
+        if fixedPosX then x = x - (pw - nw) end
+        if fixedPosY then y = y - (ph - nh) end
         self.child:setDimensions(nw, nh);
     end
 
