@@ -24,6 +24,18 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local TextLabel = {};
 
+---
+-- @param t - The class table.
+-- @param text - The text to display.
+-- @param rgba - The color to use when rendering text.
+-- @param font - The font to use when rendering text.
+-- @param x - The position of the decorator on the x-axis relative to its parent.
+-- @param y - The position of the decorator on the y-axis relative to its parent.
+-- @param fixedW - Determines wether to lock the width of the decorator or not.
+-- @param fixedH - Determines wether to lock the height of the decorator or not.
+-- @param fixedPosX - Determines wether to lock the position of the decorator or not.
+-- @param fixedPosY - Determines wether to lock the position of the decorator or not.
+--
 local function new(t, text, rgba, font, x, y, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator();
 

@@ -24,6 +24,18 @@ local BaseDecorator = require('ui.decorators.BaseDecorator');
 
 local TextArea = {};
 
+---
+-- @param t - The class table.
+-- @param text - The text to display.
+-- @param x - The position of the decorator on the x-axis relative to its parent.
+-- @param y - The position of the decorator on the y-axis relative to its parent.
+-- @param w - The width of the decorator. Determines the wrap limit for the rendered text.
+-- @param h - The height of the decorator. Determines the scissor area of the decorator.
+-- @param fixedW - Determines wether to lock the width of the decorator or not.
+-- @param fixedH - Determines wether to lock the height of the decorator or not.
+-- @param fixedPosX - Determines wether to lock the position of the decorator or not.
+-- @param fixedPosY - Determines wether to lock the position of the decorator or not.
+--
 local function new(t, text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator();
 
