@@ -26,7 +26,7 @@ local RenderArea = {};
 
 ---
 -- @param t - The class table.
--- @param content - A function which receives the position from the scroll panel when it is called.
+-- @param render - A function which receives the position from the scroll panel when it is called.
 -- @param x - The position of the decorator on the x-axis relative to its parent.
 -- @param y - The position of the decorator on the y-axis relative to its parent.
 -- @param w - The width of the decorator. Determines the wrap limit for the rendered text.
@@ -36,7 +36,7 @@ local RenderArea = {};
 -- @param fixedPosX - Determines wether to lock the position of the decorator or not.
 -- @param fixedPosY - Determines wether to lock the position of the decorator or not.
 --
-local function new(t, content, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+local function new(t, render, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator();
 
     local ox, oy = 0, 0;
@@ -46,7 +46,7 @@ local function new(t, content, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
         local px, py = self:getPosition();
         local pw, ph = self:getDimensions();
         love.graphics.setScissor(px + x, py + y, pw + w, ph + h);
-        content(px + x + ox, py + y + oy);
+        render(px + x + ox, py + y + oy);
         love.graphics.setScissor();
     end
 
