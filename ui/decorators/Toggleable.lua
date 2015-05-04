@@ -86,6 +86,14 @@ local function new()
         active = not active;
     end
 
+    function self:setActive(nactive)
+        active = nactive;
+    end
+
+    function self:isActive()
+        return active;
+    end
+
     return self;
 end
 
