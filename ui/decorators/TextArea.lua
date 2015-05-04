@@ -67,6 +67,10 @@ local function new(t, text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
         self.child:setDimensions(nw, nh);
     end
 
+    function self:setTextAreaContent(ntext)
+        text = ntext;
+    end
+
     return self;
 end
 
