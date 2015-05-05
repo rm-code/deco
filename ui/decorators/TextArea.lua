@@ -36,7 +36,7 @@ local TextArea = {};
 -- @param fixedPosX - Determines wether to lock the position of the decorator or not.
 -- @param fixedPosY - Determines wether to lock the position of the decorator or not.
 --
-local function new(t, text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+local function new(t, text, font, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator();
 
     local ox, oy = 0, 0;
@@ -46,6 +46,7 @@ local function new(t, text, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
         local px, py = self:getPosition();
         local pw, ph = self:getDimensions();
         love.graphics.setScissor(px + x, py + y, pw + w, ph + h);
+        love.graphics.setFont(font);
         love.graphics.printf(text, px + x + ox, py + y + oy, pw + w);
         love.graphics.setScissor();
     end
