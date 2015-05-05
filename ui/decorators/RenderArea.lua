@@ -52,6 +52,7 @@ local function new(t, render, update, x, y, w, h, fixedW, fixedH, fixedPosX, fix
     end
 
     function self:update(dt)
+        self.child:update(dt);
         minX, maxX, minY, maxY = update(dt);
     end
 
