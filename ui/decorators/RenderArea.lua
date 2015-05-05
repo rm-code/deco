@@ -40,6 +40,7 @@ local function new(t, render, update, x, y, w, h, fixedW, fixedH, fixedPosX, fix
     local self = BaseDecorator();
 
     local ox, oy = 0, 0;
+    local minX, maxX, minY, maxY;
 
     function self:draw()
         self.child:draw();
@@ -51,7 +52,7 @@ local function new(t, render, update, x, y, w, h, fixedW, fixedH, fixedPosX, fix
     end
 
     function self:update(dt)
-        update(dt);
+        minX, maxX, minY, maxY = update(dt);
     end
 
     function self:getContentOffset()
@@ -60,6 +61,28 @@ local function new(t, render, update, x, y, w, h, fixedW, fixedH, fixedPosX, fix
 
     function self:setContentOffset(nox, noy)
         ox, oy = nox, noy;
+
+        local px, py = self:getPosition();
+        local pw, ph = self:getDimensions();
+
+        -- Deactivate scrolling if the text fits into the panel.
+        if minX and maxX and minY and maxY then
+            if maxX < pw + w then
+                ox = minX;
+            elseif px + x + ox + maxX < px + x + pw + w then
+                ox = (px + x + pw + w) - (px + x + maxX);
+            elseif ox > minX then
+                ox = minX;
+            end
+
+            if maxY < ph + h then
+                oy = minY;
+            elseif py + y + oy + maxY < py + y + ph + h then
+                oy = (py + y + ph + h) - (py + y + maxY);
+            elseif oy > minY then
+                oy = minY;
+            end
+        end
     end
 
     function self:setDimensions(nw, nh)
