@@ -57,6 +57,28 @@ local function new(t, text, font, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPo
 
     function self:setContentOffset(nox, noy)
         ox, oy = nox, noy;
+
+        local px, py = self:getPosition();
+        local pw, ph = self:getDimensions();
+
+        -- Calculate the width and height of the area the text has been wrapped to.
+        local wrapWidth, wrapLines = font:getWrap(text, pw + w);
+        local textHeight = wrapLines * font:getLineHeight() * font:getHeight();
+
+        -- Deactivate scrolling if the text fits into the panel.
+        if textHeight < ph + h then
+            oy = 0;
+        end
+
+        -- Stop scrolling at vertical limit.
+        if py + y + oy + textHeight < py + y + ph + h then
+            oy = (py + y + ph + h) - (py + y + textHeight);
+        end
+
+        -- Stop scrolling when the top of the text area is reached.
+        if oy > 0 then
+            oy = 0;
+        end
     end
 
     function self:setDimensions(nw, nh)
