@@ -36,7 +36,7 @@ local RenderArea = {};
 -- @param fixedPosX - Determines wether to lock the position of the decorator or not.
 -- @param fixedPosY - Determines wether to lock the position of the decorator or not.
 --
-local function new(t, render, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
+local function new(t, render, update, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
     local self = BaseDecorator();
 
     local ox, oy = 0, 0;
@@ -48,6 +48,10 @@ local function new(t, render, x, y, w, h, fixedW, fixedH, fixedPosX, fixedPosY)
         love.graphics.setScissor(px + x, py + y, pw + w, ph + h);
         render(px + x + ox, py + y + oy);
         love.graphics.setScissor();
+    end
+
+    function self:update(dt)
+        update(dt);
     end
 
     function self:getContentOffset()
